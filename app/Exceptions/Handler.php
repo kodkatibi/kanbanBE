@@ -47,4 +47,13 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    //public function render($request, \Exception|Throwable $e)
+    //{
+    //    $data = [
+    //        'error' => true,
+    //        'message' => $e->getMessage()
+    //    ];
+    //    return response()->json($data, 500);
+    //}
 }

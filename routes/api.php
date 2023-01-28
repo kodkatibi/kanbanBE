@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['json.response'])->group(function () {
 
-    Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
+    Route::post('/login',  [\App\Http\Controllers\Auth\ApiAuthController::class, 'login'])->name('login.api');
     Route::post('/register', [\App\Http\Controllers\Auth\ApiAuthController::class, 'register'])->name('register.api');
     Route::middleware('auth:api')->group(function () {
-        Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
+        Route::post('/logout', [\App\Http\Controllers\Auth\ApiAuthController::class, 'logout'])->name('logout.api');
     });
 });

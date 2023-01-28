@@ -14,9 +14,10 @@ return new class extends Migration {
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('created_by')->index();
             $table->unsignedBigInteger('assigned_to_user_id')->nullable();
             $table->unsignedBigInteger('status_id')->index();
+            $table->unsignedInteger('board_id')->index();
             $table->string('title');
             $table->text('description')->nullable();
             $table->smallInteger('order')->default(0);

@@ -13,16 +13,21 @@ class Task extends Model
 
     public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     public function assigned(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::class,'assigned_to_user_id');
+        return $this->belongsTo(User::class, 'assigned_to_user_id');
     }
 
     public function status(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Status::class);
+    }
+
+    public function board(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Board::class, 'board_id');
     }
 }

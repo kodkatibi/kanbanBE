@@ -12,11 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('statuses', function (Blueprint $table) {
+        Schema::create('boards', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->smallInteger('order')->default(0);
+            $table->unsignedBigInteger('user_id')->index();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->json('statuses')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +30,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('statuses');
+        Schema::dropIfExists('boards');
     }
 };

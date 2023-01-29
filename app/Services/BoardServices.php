@@ -24,7 +24,8 @@ class BoardServices implements BaseServiceInterface
 
     public function getById(int $id)
     {
-        // TODO: Implement getById() method.
+        $board = Board::find($id);
+        return $this->map($board);
     }
 
     public function getBySlug(string $slug)
@@ -45,18 +46,16 @@ class BoardServices implements BaseServiceInterface
 
     public function update(array $data, int $id)
     {
-
+        $board = Board::find($id);
+        $board->update($data);
+        return $this->map($board);
     }
 
     public function destroy(int $id)
     {
-
-    }
-
-    public function changeStatuses(array $statuses, Board $board): void
-    {
-        $board->statuses = $statuses;
-        $board->save();
+        $board = Board::find($id);
+        $board->delete();
+        return $this->map($board);
     }
 
     private function createSlug(string $slug): string

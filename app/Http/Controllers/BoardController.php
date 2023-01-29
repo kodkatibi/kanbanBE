@@ -28,11 +28,13 @@ class BoardController extends Controller
 
     public function update($id, BoardRequest $request)
     {
-
+        $result = $this->boardServices->update($request->all(), $id);
+        return $this->response($result);
     }
 
     public function delete($id)
     {
-
+        $result = $this->boardServices->destroy($id);
+        return $this->response($result);
     }
 }

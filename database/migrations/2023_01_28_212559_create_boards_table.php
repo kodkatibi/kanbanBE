@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('description')->nullable();
             $table->json('statuses')->nullable();
             $table->softDeletes();

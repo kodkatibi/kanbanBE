@@ -18,6 +18,6 @@ class Board extends Model
 
     public function tasks(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Task::class, 'board_id')->orderBy('tasks.order');
+        return $this->hasMany(Task::class, 'board_id')->orderBy('tasks.status_id')->orderBy('tasks.order');
     }
 }

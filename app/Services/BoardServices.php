@@ -30,8 +30,7 @@ class BoardServices implements BaseServiceInterface
 
     public function getBySlug(string $slug)
     {
-        $board = Board::where('slug', $slug)->first();
-        return $this->map($board);
+        return Board::where('slug', $slug)->first();
     }
 
     public function store(array $data)
@@ -67,7 +66,7 @@ class BoardServices implements BaseServiceInterface
         return $slug;
     }
 
-    private function map($board)
+    public function map($board)
     {
         return $board->toArray();
     }

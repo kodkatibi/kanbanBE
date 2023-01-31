@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Board;
 use App\Services\BoardServices;
 use App\Services\TaskServices;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -24,7 +22,6 @@ class TaskController extends Controller
 
     public function index()
     {
-
-        return $this->response($this->board->tasks()->with('status')->get()->toArray());
+        return $this->response($this->board->tasks()->with(['status','assigned'])->get()->toArray());
     }
 }
